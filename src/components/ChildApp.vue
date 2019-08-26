@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h3>Child Component</h3>
+    <button @click="change">Change</button>
     <p>{{ name }}</p>
   </div>
 </template>
@@ -12,6 +13,13 @@ export default {
   props: {
     name: {
       default: "dummyName"
+    }
+  },
+
+  methods: {
+    //   comm with parent
+    change() {
+      this.$emit("changeName", "Name from Child");
     }
   },
 

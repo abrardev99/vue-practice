@@ -2,9 +2,10 @@
   <div id="app">
     <img src="./assets/logo.png" />
     <h1>{{ msg }}</h1>
+    <h3>{{ name }}</h3>
     <button @click="change">Change</button>
     <hr />
-    <childapp :name="name"></childapp>
+    <childapp :name="name" @changeName="revert"></childapp>
   </div>
 </template>
 
@@ -21,6 +22,11 @@ export default {
   methods: {
     change() {
       this.name = "Parent change the name";
+    },
+
+    // execute function based on custom event capture from child component
+    revert($event) {
+      this.name = $event;
     }
   },
   components: {
