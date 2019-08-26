@@ -2,12 +2,17 @@
   <div id="app">
     <img src="./assets/logo.png" />
     <h1>{{ msg }}</h1>
+    <!-- <h1>{{ msg }}</h1>
     <h3>{{ name }}</h3>
     <button @click="change">Change</button>
     <hr />
     <childapp :name="name" @changeName="revert"></childapp>
     <hr />
-    <childapp2></childapp2>
+    <childapp2></childapp2>-->
+
+    <!-- // switching components on button click -->
+    <button @click="switchComp">Switch Components</button>
+    <component :is="activeComp"></component>
   </div>
 </template>
 
@@ -20,7 +25,8 @@ export default {
   data() {
     return {
       msg: "Parent Componet",
-      name: ""
+      name: "",
+      activeComp: "childapp"
     };
   },
   methods: {
@@ -31,6 +37,15 @@ export default {
     // execute function based on custom event capture from child component
     revert($event) {
       this.name = $event;
+    },
+
+    // switching components on button click
+    switchComp() {
+      if (this.activeComp == "childapp") {
+        this.activeComp = "childapp2";
+      } else if (this.activeComp == "childapp2") {
+        this.activeComp = "childapp";
+      }
     }
   },
   components: {
