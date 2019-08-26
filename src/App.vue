@@ -6,11 +6,15 @@
     <button @click="change">Change</button>
     <hr />
     <childapp :name="name" @changeName="revert"></childapp>
+    <hr />
+    <childapp2></childapp2>
   </div>
 </template>
 
 <script>
 import ChildApp from "./components/ChildApp";
+import ChildApp2 from "./components/childApp2";
+import { eventBus } from "./main";
 
 export default {
   data() {
@@ -30,7 +34,14 @@ export default {
     }
   },
   components: {
-    childapp: ChildApp
+    childapp: ChildApp,
+    childapp2: ChildApp2
+  },
+
+  created() {
+    eventBus.$on("changeSibling", data => {
+      alert(data);
+    });
   }
 };
 </script>

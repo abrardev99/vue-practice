@@ -2,12 +2,14 @@
   <div id="app">
     <h3>Child Component</h3>
     <button @click="change">Change</button>
+    <button @click="change1">Change to Child 1</button>
     <p>{{ name }}</p>
   </div>
 </template>
 
 
 <script>
+import { eventBus } from "../main";
 export default {
   //   what if we want some calculation on data change.then use watch
   props: {
@@ -20,6 +22,11 @@ export default {
     //   comm with parent
     change() {
       this.$emit("changeName", "Name from Child");
+    },
+
+    // comm with siblings using event bus.
+    change1() {
+      eventBus.$emit("changeSibling", "ChildApp Changed the name");
     }
   },
 
