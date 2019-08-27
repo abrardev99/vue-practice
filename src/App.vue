@@ -16,6 +16,7 @@
 
     <hr />
     <userinput></userinput>
+
   </div>
 </template>
 
@@ -27,12 +28,13 @@ import { eventBus } from "./main";
 // importing user input component
 import userInput from "./components/UserInput";
 
+
 export default {
   data() {
     return {
       msg: "Parent Componet",
       name: "",
-      activeComp: "childapp",
+      activeComp: "childapp"
     };
   },
   methods: {
@@ -57,7 +59,8 @@ export default {
   components: {
     childapp: ChildApp,
     childapp2: ChildApp2,
-    userinput: userInput
+    userinput: userInput,
+  
   },
 
   created() {

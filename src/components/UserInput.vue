@@ -67,15 +67,22 @@
           </select>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 from-group">
+          <switched v-model="userData.switchValue"></switched>
+        </div>
+      </div>
       <hr />
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-          <button class="btn btn-primary">Submit!</button>
+          <!-- form submission -->
+          <button @click.prevent="save" class="btn btn-primary">Submit!</button>
         </div>
       </div>
     </form>
     <hr />
-    <div class="row">
+    <div class="row" v-if="userData.isSaved">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -97,7 +104,7 @@
 
             <!-- showing data from drop down -->
             <p>Priority: {{ userData.selected }}</p>
-            <p>Switched:</p>
+            <p>Switched: {{ userData.switchValue }}</p>
           </div>
         </div>
       </div>
@@ -106,6 +113,7 @@
 </template>
 
 <script>
+import Switched from "./CustomSwitch";
 export default {
   data() {
     // we can initilze each value here, but prefer to make object like
@@ -119,9 +127,21 @@ export default {
         mailArray: [],
         gender: "male",
         selected: "B",
-        selectedArray: ["A", "B", "C"]
+        selectedArray: ["A", "B", "C"],
+        switchValue: false,
+        isSaved: false
       }
     };
+  },
+
+  methods: {
+    save() {
+      this.userData.isSaved = true;
+      //   we can do whatever with the data, save to server using API etc,
+    }
+  },
+  components: {
+    switched: Switched
   }
 };
 </script>
