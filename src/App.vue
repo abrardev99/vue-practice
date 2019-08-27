@@ -13,6 +13,9 @@
     <!-- // switching components on button click -->
     <button @click="switchComp">Switch Components</button>
     <component :is="activeComp"></component>
+
+    <hr />
+    <userinput></userinput>
   </div>
 </template>
 
@@ -21,12 +24,15 @@ import ChildApp from "./components/ChildApp";
 import ChildApp2 from "./components/childApp2";
 import { eventBus } from "./main";
 
+// importing user input component
+import userInput from "./components/UserInput";
+
 export default {
   data() {
     return {
       msg: "Parent Componet",
       name: "",
-      activeComp: "childapp"
+      activeComp: "childapp",
     };
   },
   methods: {
@@ -50,7 +56,8 @@ export default {
   },
   components: {
     childapp: ChildApp,
-    childapp2: ChildApp2
+    childapp2: ChildApp2,
+    userinput: userInput
   },
 
   created() {
