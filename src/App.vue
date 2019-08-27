@@ -11,12 +11,15 @@
     <childapp2></childapp2>-->
 
     <!-- // switching components on button click -->
-    <button @click="switchComp">Switch Components</button>
+
+    <!-- <button @click="switchComp">Switch Components</button>
     <component :is="activeComp"></component>
 
     <hr />
-    <userinput></userinput>
+    <userinput></userinput>-->
 
+    <!-- custom directive  -->
+    <customdirective></customdirective>
   </div>
 </template>
 
@@ -27,7 +30,7 @@ import { eventBus } from "./main";
 
 // importing user input component
 import userInput from "./components/UserInput";
-
+import CustomDirective from "./components/CustomDirective";
 
 export default {
   data() {
@@ -60,7 +63,7 @@ export default {
     childapp: ChildApp,
     childapp2: ChildApp2,
     userinput: userInput,
-  
+    customdirective: CustomDirective
   },
 
   created() {
