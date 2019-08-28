@@ -22,7 +22,7 @@ Vue.directive('change-color', {
   }
 })
 
-// argument based directive  
+// argument based directive  eg modifier
 Vue.directive('arg-color', {
   bind(el, binding, vNode) {
     if (binding.arg == 'bg') {
