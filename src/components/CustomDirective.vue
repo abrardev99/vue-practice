@@ -68,7 +68,7 @@ export default {
             el.style.color = currentColor;
             currentColor = firstColor;
           }
-        }, 100);
+        }, 500);
       }
     }
   },

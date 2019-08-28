@@ -19,7 +19,11 @@
     <userinput></userinput>-->
 
     <!-- custom directive  -->
-    <customdirective></customdirective>
+    <!-- <customdirective></customdirective>
+    <hr />
+    <br />-->
+
+    <filterpractice></filterpractice>
   </div>
 </template>
 
@@ -31,6 +35,8 @@ import { eventBus } from "./main";
 // importing user input component
 import userInput from "./components/UserInput";
 import CustomDirective from "./components/CustomDirective";
+import FilterPractice from "./components/FilterPractice";
+import FilterPracticeVue from "./components/FilterPractice.vue";
 
 export default {
   data() {
@@ -63,7 +69,8 @@ export default {
     childapp: ChildApp,
     childapp2: ChildApp2,
     userinput: userInput,
-    customdirective: CustomDirective
+    customdirective: CustomDirective,
+    filterpractice: FilterPracticeVue
   },
 
   created() {

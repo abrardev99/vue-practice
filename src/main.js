@@ -5,8 +5,14 @@ import App from './App.vue'
 export const eventBus = new Vue();
 
 
-// resgistering custom directive here.
+// adding filter globally 
+Vue.filter('addingRupeeSign', (value) => {
+  return 'RS ' + value;
+})
 
+
+
+// resgistering custom directive here.
 // simple directive
 Vue.directive('success', {
   // we have directive hooks like bind, inserted, update and unbind
