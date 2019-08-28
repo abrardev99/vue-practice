@@ -6,12 +6,17 @@
       <p>{{ text | addingDollarSign }}</p>
       <br />
       <!-- using global filters -->
-      <p>{{ text | addingRupeeSign }}</p>
+      <!-- <p>{{ text | addingRupeeSign }}</p> -->
+
+      <!-- using mixin -->
+      <p>{{ addingSign }}</p>
     </div>
   </div>
 </template>
 <script>
+import { myMixin } from "../MyMixin";
 export default {
+  mixins: [myMixin],
   data() {
     return {
       text: "2500"

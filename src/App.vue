@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png" />
+    <!-- <img src="./assets/logo.png" /> -->
     <h1>{{ msg }}</h1>
     <!-- <h1>{{ msg }}</h1>
     <h3>{{ name }}</h3>
@@ -22,8 +22,21 @@
     <!-- <customdirective></customdirective>
     <hr />
     <br />-->
-
+    <!-- 
     <filterpractice></filterpractice>
+    <mixin></mixin>-->
+
+    <input type="text" name id placeholder="Enter Lable" v-model="label" />
+    <select name id v-model="type">
+      <option>text</option>
+      <option>file</option>
+      <option>radio</option>
+    </select>
+    <button @click.prevent="submit">Generate</button>
+    <hr />
+    <br />
+    <br />
+    <inputcom :labels="labels" :types="types"></inputcom>
   </div>
 </template>
 
@@ -37,16 +50,28 @@ import userInput from "./components/UserInput";
 import CustomDirective from "./components/CustomDirective";
 import FilterPractice from "./components/FilterPractice";
 import FilterPracticeVue from "./components/FilterPractice.vue";
+import MixinPractice from "./components/MixinPractice";
+import InputCom from "./components/MyInput";
 
 export default {
   data() {
     return {
       msg: "Parent Componet",
       name: "",
-      activeComp: "childapp"
+      activeComp: "childapp",
+      msg: "Welcome to Your Vue.js App",
+      labels: ["Name", "Image", "Gender"],
+      types: ["text", "file", "radio"],
+      label: "Name",
+      type: "text"
     };
   },
   methods: {
+    submit() {
+      this.labels.unshift(this.label);
+      this.types.unshift(this.type);
+    },
+
     change() {
       this.name = "Parent change the name";
     },
@@ -70,7 +95,9 @@ export default {
     childapp2: ChildApp2,
     userinput: userInput,
     customdirective: CustomDirective,
-    filterpractice: FilterPracticeVue
+    filterpractice: FilterPracticeVue,
+    mixin: MixinPractice,
+    inputcom: InputCom
   },
 
   created() {
