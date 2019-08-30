@@ -1,8 +1,17 @@
 import Vue from 'vue'
 import App from './App.vue'
+import VueResource from 'vue-resource'
+
+// importing vue resource
+Vue.use(VueResource);
 
 // for child to child communication using event Bus
-export const eventBus = new Vue();
+export const eventBus = new Vue({
+  data: {
+    email: '',
+    welcome: false,
+  }
+});
 
 
 // adding filter globally 

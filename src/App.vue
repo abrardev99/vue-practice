@@ -26,17 +26,34 @@
     <filterpractice></filterpractice>
     <mixin></mixin>-->
 
+    <!-- creating input  -->
+    <!-- Label
     <input type="text" name id placeholder="Enter Lable" v-model="label" />
     <select name id v-model="type">
       <option>text</option>
       <option>file</option>
       <option>radio</option>
+      <option>checkbox</option>
     </select>
     <button @click.prevent="submit">Generate</button>
     <hr />
     <br />
     <br />
-    <inputcom :labels="labels" :types="types"></inputcom>
+    <inputcom :labels="labels" :types="types"></inputcom>-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="#" @click="navigation('login')">
+            Login
+            <span class="sr-only">(current)</span>
+          </a>
+          <a class="nav-item nav-link" href="#" @click="navigation('register')">Register</a>
+          <a class="nav-item nav-link" href="#" @click="navigation('home')">Home</a>
+        </div>
+      </div>
+    </nav>
+
+    <component :is="activeComp"></component>
   </div>
 </template>
 
@@ -52,13 +69,16 @@ import FilterPractice from "./components/FilterPractice";
 import FilterPracticeVue from "./components/FilterPractice.vue";
 import MixinPractice from "./components/MixinPractice";
 import InputCom from "./components/MyInput";
+import Home from "./dashboard/home";
+import Login from "./dashboard/Login";
+import Register from "./dashboard/register";
 
 export default {
   data() {
     return {
       msg: "Parent Componet",
       name: "",
-      activeComp: "childapp",
+      activeComp: "home",
       msg: "Welcome to Your Vue.js App",
       labels: ["Name", "Image", "Gender"],
       types: ["text", "file", "radio"],
@@ -67,6 +87,20 @@ export default {
     };
   },
   methods: {
+    activeHome() {
+      console.log("listening active home");
+      this.activeComp = "home";
+    },
+    navigation(value) {
+      if (value == "login") {
+        this.activeComp = "login";
+      } else if (value == "home") {
+        this.activeComp = "home";
+      } else if (value == "register") {
+        this.activeComp = "register";
+      }
+    },
+
     submit() {
       this.labels.unshift(this.label);
       this.types.unshift(this.type);
@@ -97,12 +131,16 @@ export default {
     customdirective: CustomDirective,
     filterpractice: FilterPracticeVue,
     mixin: MixinPractice,
-    inputcom: InputCom
+    inputcom: InputCom,
+    home: Home,
+    login: Login,
+    register: Register
   },
 
-  created() {
-    eventBus.$on("changeSibling", data => {
-      alert(data);
+  mounted() {
+    eventBus.$on("value-updated", () => {
+      // console.log("value updated");
+      this.navigation("home");
     });
   }
 };
