@@ -40,7 +40,8 @@
     <br />
     <br />
     <inputcom :labels="labels" :types="types"></inputcom>-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link" href="#" @click="navigation('login')">
@@ -53,7 +54,9 @@
       </div>
     </nav>
 
-    <component :is="activeComp"></component>
+    <component :is="activeComp"></component>-->
+
+    <http></http>
   </div>
 </template>
 
@@ -72,6 +75,7 @@ import InputCom from "./components/MyInput";
 import Home from "./dashboard/home";
 import Login from "./dashboard/Login";
 import Register from "./dashboard/register";
+import httpPractice from "./components/HttpPractice";
 
 export default {
   data() {
@@ -134,7 +138,8 @@ export default {
     inputcom: InputCom,
     home: Home,
     login: Login,
-    register: Register
+    register: Register,
+    http: httpPractice
   },
 
   mounted() {
