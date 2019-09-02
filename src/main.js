@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueResource from 'vue-resource'
+import axs from 'axios';
+
+axs.defaults.baseURL = 'https://reqres.in/api/users'
 
 // importing vue resource
 Vue.use(VueResource);
+
 
 // for child to child communication using event Bus
 export const eventBus = new Vue({

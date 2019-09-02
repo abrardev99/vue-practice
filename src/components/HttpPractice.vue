@@ -8,7 +8,7 @@
       <hr />
       <button class="btn btn-danger" @click="deleteData">Delete</button>
       <hr />
-      <button class="btn btn-primary" @click="fetchAnother">Fetch Data</button>
+      <button class="btn btn-primary" @click="fetchData">Fetch Data</button>
       <table class="table">
         <thead>
           <tr>

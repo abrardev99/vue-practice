@@ -56,7 +56,9 @@
 
     <component :is="activeComp"></component>-->
 
-    <http></http>
+    <!-- <http></http> -->
+
+    <axioshttp></axioshttp>
   </div>
 </template>
 
@@ -76,6 +78,7 @@ import Home from "./dashboard/home";
 import Login from "./dashboard/Login";
 import Register from "./dashboard/register";
 import httpPractice from "./components/HttpPractice";
+import AxiosHttp from "./components/AxiosPractice";
 
 export default {
   data() {
@@ -139,7 +142,8 @@ export default {
     home: Home,
     login: Login,
     register: Register,
-    http: httpPractice
+    http: httpPractice,
+    axioshttp: AxiosHttp
   },
 
   mounted() {
